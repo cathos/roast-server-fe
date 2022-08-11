@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.363edd29.css",
+    "main.js": "/static/js/main.3abae24c.js",
+    "static/js/787.92d6b907.chunk.js": "/static/js/787.92d6b907.chunk.js",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.ttf": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.91063a0fca6fe70ab2a6.ttf",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.ttf": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.4d58e93a74c328c2f560.ttf",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.woff": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.dda1f3c45569babaac05.woff",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.eot": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.da3153752b9003ac78cf.eot",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.woff": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.971481340ee7f32d107c.woff",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.eot": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.7faef1a03740a002a41f.eot",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.svg": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.5f161aecfdbfcc919b49.svg",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.svg": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.9516c4f8a56b3be312e0.svg",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.woff2": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.b5cd00bc72d7bed4ebd5.woff2",
+    "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.woff2": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.d043c90c6bf538049ce3.woff2",
+    "index.html": "/index.html",
+    "main.363edd29.css.map": "/static/css/main.363edd29.css.map",
+    "main.3abae24c.js.map": "/static/js/main.3abae24c.js.map",
+    "787.92d6b907.chunk.js.map": "/static/js/787.92d6b907.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.363edd29.css",
+    "static/js/main.3abae24c.js"
+  ]
+}

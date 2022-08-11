@@ -1,12 +1,12 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TempsAndTimes from "./components/TempsAndTimes";
 
 const axios = require("axios");
 
 // const backendAddr = "http://localhost:5000";
-const backendAddr = "http://raspberrypi.local:5000";
+const backendAddr = "http://192.168.88.224:5000";
 
 let initialData = {
   roast_minutes: 4,
@@ -100,8 +100,15 @@ function App() {
   // const connectionStatus = checkConnection();
   // initRoaster();
   // const roastData = useState(initialData, getRoasterStatus());
-  const roastData = getRoasterStatus();
+  // const roastData = getRoasterStatus();
   // const roastData = testData;
+
+  const [roastData, getRoastData] = useState([]);
+
+  useEffect(() => {
+    const roastData2 = getRoastData(getRoasterStatus());
+    console.log(roastData2);
+  }, []);
 
   return (
     <div className="App">
