@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.363edd29.css",
-    "main.js": "/static/js/main.3abae24c.js",
+    "main.js": "/static/js/main.0bc2d80a.js",
     "static/js/787.92d6b907.chunk.js": "/static/js/787.92d6b907.chunk.js",
     "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.ttf": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-600.91063a0fca6fe70ab2a6.ttf",
     "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.ttf": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.4d58e93a74c328c2f560.ttf",
@@ -15,11 +15,11 @@
     "static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.woff2": "/static/media/eczar-v16-latin-ext_latin_greek-ext_greek_devanagari-regular.d043c90c6bf538049ce3.woff2",
     "index.html": "/index.html",
     "main.363edd29.css.map": "/static/css/main.363edd29.css.map",
-    "main.3abae24c.js.map": "/static/js/main.3abae24c.js.map",
+    "main.0bc2d80a.js.map": "/static/js/main.0bc2d80a.js.map",
     "787.92d6b907.chunk.js.map": "/static/js/787.92d6b907.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.363edd29.css",
-    "static/js/main.3abae24c.js"
+    "static/js/main.0bc2d80a.js"
   ]
 }

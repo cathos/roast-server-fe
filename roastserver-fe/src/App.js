@@ -5,8 +5,8 @@ import TempsAndTimes from "./components/TempsAndTimes";
 
 const axios = require("axios");
 
-// const backendAddr = "http://localhost:5000";
-const backendAddr = "http://192.168.88.224:5000";
+const backendAddr = "http://localhost:5000";
+// const backendAddr = "http://192.168.88.224:5000";
 
 let initialData = {
   roast_minutes: 4,
