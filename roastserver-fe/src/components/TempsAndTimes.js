@@ -10,7 +10,7 @@ const TempsAndTimes = (props) => {
   return (
     <div className="Temps-and-Times">
       <h3 className="Roast-Time" alt="Roast Time">
-        Time: {roastTime}
+        Roast Time: {roastTime}
       </h3>
       <h3 className="IR-Bean-Temp" alt="Infrared Bean Temperature">
         IR Bean Temp: {roasterdata.ir_bt}
@@ -41,11 +41,6 @@ const TempsAndTimes = (props) => {
 
 // TempsAndTimes.propTypes = {
 //   roasttime: PropTypes.string.isRequired,
-//   sender: PropTypes.string.isRequired,
-//   body: PropTypes.string.isRequired,
-//   timeStamp: PropTypes.string.isRequired,
-//   liked: PropTypes.bool,
-//   onLike: PropTypes.func,
 // };
 
 export default TempsAndTimes;
