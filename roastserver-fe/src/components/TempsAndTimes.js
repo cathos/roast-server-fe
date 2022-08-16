@@ -1,10 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import useRoastData from "../hooks/useRoastData";
 
 const TempsAndTimes = (props) => {
   console.log(props);
-  const roasterdata = props.roasterdata;
-  const roastTime = `${roasterdata.roast_minutes}:${roasterdata.roast_seconds}`;
+  // const CheckValidData = () => {
+  //   if props.roasterdata.roast_minutes
+  // }
+  const { roasterData, isLoading, isError } = useRoastData();
+  if (isLoading) return <p>Loading</p>;
+  if (isError) return <p>Error</p>;
+  console.log(roasterData);
+  const roastTime = `${roasterData.roast_minutes}:${roasterData.roast_seconds}`;
   // const timeSinceFC =
   // const devPerc = (timeSinceFC / roastTime)
   return (
@@ -13,26 +20,26 @@ const TempsAndTimes = (props) => {
         Roast Time: {roastTime}
       </h3>
       <h3 className="IR-Bean-Temp" alt="Infrared Bean Temperature">
-        IR Bean Temp: {roasterdata.ir_bt}
+        IR Bean Temp: {roasterData.ir_bt}
       </h3>
       <h3 className="TC-Bean-Temp" alt="Thermocouple Bean Temperature">
-        TC Bean Temp: {roasterdata.bean_temp}
+        TC Bean Temp: {roasterData.bean_temp}
       </h3>
       <h3 className="BT-ROR" alt="Bean Temperature Rate of Rise">
-        BT-ROR: {roasterdata.bt_ror}
+        BT-ROR: {roasterData.bt_ror}
       </h3>
       <h3 className="Delta-T" alt="Delta Temperature">
-        Delta-T: {roasterdata.delta_t}
+        Delta-T: {roasterData.delta_t}
       </h3>
       <h3 className="Dev-Percentage" alt="Development Percent">
-        {/* Development: {roasterdata.devPerc} */}
+        {/* Development: {roasterData.devPerc} */}
       </h3>
       <h3 className="Time-Since-FC" alt="Time Since First Crack">
-        {/* Time Since FC: {roasterdata.timeSinceFC} */}
+        {/* Time Since FC: {roasterData.timeSinceFC} */}
       </h3>
       <section className="Extra-Info">
         <h4 className="Ext-Temp" alt="Exhaust Temperature">
-          {/* Ext Temp: {roasterdata.ext_t} */}
+          {/* Ext Temp: {roasterData.ext_t} */}
         </h4>
       </section>
     </div>

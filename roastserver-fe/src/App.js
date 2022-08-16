@@ -1,8 +1,12 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import useSWR from "swr";
 import TempsAndTimes from "./components/TempsAndTimes";
 import RoasterButtons from "./components/RoasterButtons";
+import NavBar from "./components/NavBar";
+import useRoastData from "./hooks/useRoastData";
+import useConnectionStatus from "./hooks/useConnectionStatus";
 import Graph from "./components/Graph";
 
 const axios = require("axios");
@@ -11,7 +15,7 @@ const axios = require("axios");
 const backendAddr = "http://192.168.88.224:5000";
 
 let initialData = {
-  roast_minutes: 4,
+  roast_minutes: -0,
 };
 
 const testData = {
@@ -28,24 +32,24 @@ const testData = {
   ir_bt: 30.9,
   pcb_temp: 27.5,
   preheat_temp: 2560,
-  roast_minutes: 48,
+  roast_minutes: 0,
   roast_seconds: 17,
   roaster_state: "off",
   voltage: 121,
 };
 
-const testGraphData = {};
+const testGraphData = { testData };
 
 function App() {
-  async function checkConnection() {
-    try {
-      const result = await axios.get(`${backendAddr}`);
-      console.log(result);
-      return result.data;
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  //   async function checkConnection() {
+  //     try {
+  //       const result = await axios.get(`${backendAddr}`);
+  //       console.log(result);
+  //       return result.data;
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
 
   async function initRoaster() {
     try {
@@ -85,41 +89,44 @@ function App() {
           console.log(`BLARGH ${error.response}`);
         });
       console.log(`BLUBBLUB ${result.data}`);
-      return result.data;
+      // if (result.data) {
+      //   return result.data;
+      // } else {
+      //   return initialData;
+      // }
     } catch (error) {
       console.error(error);
     }
   }
-  // rewrite this function to use non-async
-  // function getRoasterStatus() {
-  //   axios
-  //     .get(`${backendAddr}/status`)
-  //     .then((response) => {
-  //       console.log(`inside axios`, response.data);
-  //       return response.data;
-  //     })
-  //     .catch((error) => {
-  //       console.log("roasterStatus error: " + error.response);
-  //     });
-  // }
 
-  async function getBulkRoastData() {
+  async function startDataRecording() {
     try {
-      const result = await axios
-        .get(`${backendAddr}/bulkdata`)
-        .then((response) => {
-          console.log(`inside axios`, response.data);
-          return response;
-        })
-        .catch((error) => {
-          console.log(`BulkDataError ${error.response}`);
-        });
-      console.log(`BulkDataResult ${result.data}`);
-      return result.data;
-    } catch (error) {
-      console.error(error);
+      const result = await axios.post(`${backendAddr}/record/start`, {
+        start: "",
+      });
+      return result.status;
+    } catch (err) {
+      console.error(err);
     }
   }
+
+  // async function getBulkRoastData() {
+  //   try {
+  //     const result = await axios
+  //       .get(`${backendAddr}/bulkdata`)
+  //       .then((response) => {
+  //         console.log(`inside axios`, response.data);
+  //         return response;
+  //       })
+  //       .catch((error) => {
+  //         console.log(`BulkDataError ${error.response}`);
+  //       });
+  //     console.log(`BulkDataResult ${result.data}`);
+  //     return result.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   function changeRoasterState(button) {
     const config = { request: button };
@@ -140,56 +147,73 @@ function App() {
   // const roastData = getRoasterStatus();
   // const roastData = testData;
 
-  const [roastData, getRoastData] = useState(testData);
-  const [bulkRoastData, getBulkData] = useState(testGraphData);
+  // const [roastData, getRoastData] = useState(initialData);
+
+  // const [bulkRoastData, getBulkData] = useState(testGraphData);
 
   // useEffect(() => {
   //   getRoastData(getRoasterStatus());
   //   console.log(`inside useEffect`, roastData);
   // }, []);
 
-  useEffect(() => {
-    (async () => {
-      const roastData2 = await getRoasterStatus();
-      getRoastData(roastData2);
-      console.log(`inside useEffect`, roastData2);
-    })();
+  // async function effectRoastData() {
+  //   const result = await getRoasterStatus();
+  //   getRoastData(result.data);
+  //   console.log(`inside effectRoastData`, result.data);
+  // }
 
-    return () => {
-      // this now gets called when the component unmounts
-    };
-  }, []);
+  // useEffect(() => {
+  //   // effectRoastData();
+  //   (async () => {
+  //     const result = await getRoasterStatus();
+  //     const resultdata = await result.data;
+  //     getRoastData(resultdata);
+  //     console.log(`inside effectRoastData`, resultdata);
+  //   })();
 
-  useEffect(() => {
-    (async () => {
-      const bulkRoastData2 = await getBulkRoastData();
-      getBulkData(bulkRoastData2);
-      // console.log(`inside useEffect`, bulkRoastData2);
-    })();
+  //   return () => {};
+  // }, [roastData.id]);
 
-    return () => {
-      // this now gets called when the component unmounts
-    };
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const bulkRoastData2 = await getBulkRoastData();
+  //     getBulkData(bulkRoastData2);
+  //     // console.log(`inside useEffect`, bulkRoastData2);
+  //   })();
+
+  //   return () => {
+  //     // this now gets called when the component unmounts
+  //   };
+  // }, []);
+
+  // const [connectionStatus, checkConnection] = useState();
 
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="Title">Roast Server</h1>
-        <nav>{/* <div connection={connectionStatus}></div> */}</nav>
+        <nav>
+          <NavBar />
+          {/* <button onClick={() => startDataRecording()}>
+            Record Roast Data
+          </button> */}
+        </nav>
       </header>
       <main>
         {/* {roastData ? ( */}
-        <TempsAndTimes roasterdata={roastData}></TempsAndTimes>
+        <TempsAndTimes
+        // roasterdata={roastData}
+        />
         {/* ) : null} */}
         <RoasterButtons
-          roasterdata={roastData}
+          // roasterdata={roastData}
           changeStateCallback={changeRoasterState}
         />
-        <Graph bulkroasterdata={bulkRoastData}></Graph>
+        <Graph></Graph>
       </main>
     </div>
   );
 }
 
+export { initialData, backendAddr };
 export default App;
