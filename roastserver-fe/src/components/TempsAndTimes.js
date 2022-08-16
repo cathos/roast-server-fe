@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import useRoastData from "../hooks/useRoastData";
 
 const TempsAndTimes = (props) => {
@@ -15,34 +15,34 @@ const TempsAndTimes = (props) => {
   // const timeSinceFC =
   // const devPerc = (timeSinceFC / roastTime)
   return (
-    <div className="Temps-and-Times">
-      <h3 className="Roast-Time" alt="Roast Time">
+    <ul className="TempsAndTimes, fancy-text">
+      <li className="Roast-Time" alt="Roast Time">
         Roast Time: {roastTime}
-      </h3>
-      <h3 className="IR-Bean-Temp" alt="Infrared Bean Temperature">
+      </li>
+      <li className="IR-Bean-Temp" alt="Infrared Bean Temperature">
         IR Bean Temp: {roasterData.ir_bt}
-      </h3>
-      <h3 className="TC-Bean-Temp" alt="Thermocouple Bean Temperature">
+      </li>
+      <li className="TC-Bean-Temp" alt="Thermocouple Bean Temperature">
         TC Bean Temp: {roasterData.bean_temp}
-      </h3>
-      <h3 className="BT-ROR" alt="Bean Temperature Rate of Rise">
+      </li>
+      <li className="BT-ROR" alt="Bean Temperature Rate of Rise">
         BT-ROR: {roasterData.bt_ror}
-      </h3>
-      <h3 className="Delta-T" alt="Delta Temperature">
+      </li>
+      <li className="Delta-T" alt="Delta Temperature">
         Delta-T: {roasterData.delta_t}
-      </h3>
-      <h3 className="Dev-Percentage" alt="Development Percent">
+      </li>
+      <li className="Dev-Percentage" alt="Development Percent" hidden>
         {/* Development: {roasterData.devPerc} */}
-      </h3>
-      <h3 className="Time-Since-FC" alt="Time Since First Crack">
+      </li>
+      <li className="Time-Since-FC" alt="Time Since First Crack" hidden>
         {/* Time Since FC: {roasterData.timeSinceFC} */}
-      </h3>
-      <section className="Extra-Info">
-        <h4 className="Ext-Temp" alt="Exhaust Temperature">
+      </li>
+      <section className="Extra-Info" hidden>
+        <li className="Ext-Temp" alt="Exhaust Temperature">
           {/* Ext Temp: {roasterData.ext_t} */}
-        </h4>
+        </li>
       </section>
-    </div>
+    </ul>
   );
 };
 

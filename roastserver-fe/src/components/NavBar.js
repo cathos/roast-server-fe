@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import useConnectionStatus from "../hooks/useConnectionStatus";
 
 const NavBar = (props) => {
@@ -11,11 +11,11 @@ const NavBar = (props) => {
     connection = "Roaster Connected";
   }
   return (
-    <div className="NavBar">
-      <h3 className="Connection_Status" alt="Connection Status">
+    <ul className="NavBar">
+      <li className="Connection_Status" alt="Connection Status">
         {connection}
-      </h3>
-    </div>
+      </li>
+    </ul>
   );
 };
 

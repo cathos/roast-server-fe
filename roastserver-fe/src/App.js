@@ -1,12 +1,11 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import useSWR from "swr";
+// import useSWR from "swr";
 import TempsAndTimes from "./components/TempsAndTimes";
 import RoasterButtons from "./components/RoasterButtons";
-import NavBar from "./components/NavBar";
-import useRoastData from "./hooks/useRoastData";
-import useConnectionStatus from "./hooks/useConnectionStatus";
+// import NavBar from "./components/NavBar";
+// import useRoastData from "./hooks/useRoastData";
+// import useConnectionStatus from "./hooks/useConnectionStatus";
 import Graph from "./components/Graph";
 
 const axios = require("axios");
@@ -41,15 +40,15 @@ const testData = {
 const testGraphData = { testData };
 
 function App() {
-  //   async function checkConnection() {
-  //     try {
-  //       const result = await axios.get(`${backendAddr}`);
-  //       console.log(result);
-  //       return result.data;
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   }
+  async function checkConnection() {
+    try {
+      const result = await axios.get(`${backendAddr}`);
+      console.log(result);
+      return result.data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   async function initRoaster() {
     try {
@@ -73,11 +72,6 @@ function App() {
   }
 
   async function getRoasterStatus() {
-    // const config = {
-    //   headers: {
-    //     Accept: "application/json",
-    //   },
-    // };
     try {
       const result = await axios
         .get(`${backendAddr}/status`)
@@ -88,12 +82,6 @@ function App() {
         .catch((error) => {
           console.log(`BLARGH ${error.response}`);
         });
-      console.log(`BLUBBLUB ${result.data}`);
-      // if (result.data) {
-      //   return result.data;
-      // } else {
-      //   return initialData;
-      // }
     } catch (error) {
       console.error(error);
     }
@@ -110,24 +98,6 @@ function App() {
     }
   }
 
-  // async function getBulkRoastData() {
-  //   try {
-  //     const result = await axios
-  //       .get(`${backendAddr}/bulkdata`)
-  //       .then((response) => {
-  //         console.log(`inside axios`, response.data);
-  //         return response;
-  //       })
-  //       .catch((error) => {
-  //         console.log(`BulkDataError ${error.response}`);
-  //       });
-  //     console.log(`BulkDataResult ${result.data}`);
-  //     return result.data;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   function changeRoasterState(button) {
     const config = { request: button };
     axios
@@ -141,74 +111,18 @@ function App() {
       });
   }
 
-  // const connectionStatus = checkConnection();
-  // initRoaster();
-  // const roastData = useState(initialData, getRoasterStatus());
-  // const roastData = getRoasterStatus();
-  // const roastData = testData;
-
-  // const [roastData, getRoastData] = useState(initialData);
-
-  // const [bulkRoastData, getBulkData] = useState(testGraphData);
-
-  // useEffect(() => {
-  //   getRoastData(getRoasterStatus());
-  //   console.log(`inside useEffect`, roastData);
-  // }, []);
-
-  // async function effectRoastData() {
-  //   const result = await getRoasterStatus();
-  //   getRoastData(result.data);
-  //   console.log(`inside effectRoastData`, result.data);
-  // }
-
-  // useEffect(() => {
-  //   // effectRoastData();
-  //   (async () => {
-  //     const result = await getRoasterStatus();
-  //     const resultdata = await result.data;
-  //     getRoastData(resultdata);
-  //     console.log(`inside effectRoastData`, resultdata);
-  //   })();
-
-  //   return () => {};
-  // }, [roastData.id]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const bulkRoastData2 = await getBulkRoastData();
-  //     getBulkData(bulkRoastData2);
-  //     // console.log(`inside useEffect`, bulkRoastData2);
-  //   })();
-
-  //   return () => {
-  //     // this now gets called when the component unmounts
-  //   };
-  // }, []);
-
-  // const [connectionStatus, checkConnection] = useState();
-
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="Title">Roast Server</h1>
         <nav>
-          <NavBar />
-          {/* <button onClick={() => startDataRecording()}>
-            Record Roast Data
-          </button> */}
+          <h1 className="Title">Roast Server</h1>
+          <div class="controls-and-feedback">
+            <RoasterButtons changeStateCallback={changeRoasterState} />
+            <TempsAndTimes />
+          </div>
         </nav>
       </header>
       <main>
-        {/* {roastData ? ( */}
-        <TempsAndTimes
-        // roasterdata={roastData}
-        />
-        {/* ) : null} */}
-        <RoasterButtons
-          // roasterdata={roastData}
-          changeStateCallback={changeRoasterState}
-        />
         <Graph></Graph>
       </main>
     </div>
